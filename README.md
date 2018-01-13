@@ -17,15 +17,15 @@ docker run -ti --rm \
 	/bin/ash -c "flaskbb --config=config/flaskbb.cfg install"
 ````
 
-To upgrade (while your `docker-compose` instance of FlaskBB is running):
+To upgrade the database (be sure to run `docker-compose restart` after if your instance is running!):
 
 ````
-docker exec -ti <web container name> \
+docker run -ti --rm \
+	-v $(pwd)/data:/app/data \
+	-v $(pwd)/config:/app/config \
+	haliphax/flaskbb:latest \
 	/bin/ash -c "flaskbb --config=config/flaskbb.cfg db upgrade"
-docker-compose restart
 ````
-
-Your web container name will be something like **myforum_web_1**.
 
 ## Notes
 
