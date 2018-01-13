@@ -27,5 +27,9 @@ docker-compose restart
 
 Your web container name will be something like **myforum_web_1**.
 
-**Note:** If you don't want to run FlaskBB on port 80, modify the `ports`
+## Notes
+
+- If you don't want to run FlaskBB on port 80, modify the `ports`
 section of the `docker-compose.yml` file.
+- If you don't want to use a custom theme, delete the corresponding line
+in the `volumes` section of the `docker-compose.yml` file.
