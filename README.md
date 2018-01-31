@@ -5,7 +5,7 @@ This is an example `docker-compose` configuration for running
 [redis:alpine](https://hub.docker.com/r/library/redis/tags/alpine/) together.
 
 Your configuration should set all of the `REDIS_*` settings to
-`redis://redis:6379` and the `CACHE_REDIS_HOST` setting to `redis`.
+`redis://redis:6379` and the `CACHE_REDIS_URL` setting to `REDIS_URL`.
 
 To spin up a new installation of FlaskBB:
 
