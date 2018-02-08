@@ -19,8 +19,8 @@ docker run -ti --rm \
 	/bin/ash -c "flaskbb --config=config/flaskbb.cfg install"
 ````
 
-To upgrade the database (be sure to run `docker-compose restart` after if your
-instance is running!):
+To upgrade the database (be sure to run `docker-compose restart` afterward if
+your instance is running!):
 
 ````
 docker run -ti --rm \
