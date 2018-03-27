@@ -4,13 +4,25 @@ services:
         image: redis:alpine
         expose:
             - 6379
-    web:
+    celery:
         image: haliphax/flaskbb:latest
         depends_on:
             - redis
+        command: 'flaskbb --config=config/flaskbb.cfg celery worker'
         volumes:
             - ./config:/app/config
             - ./data:/app/data
-            - ./themes:/app/flaskbb/flaskbb/themes
+    web:
+        image: haliphax/flaskbb:latest
+        depends_on:
+            - celery
+        command: /bin/ash -c '\
+            pip install -U --no-deps ./flaskbb; \
+            gunicorn -w 4 -b 0.0.0.0:5000 wsgi:flaskbb \
+            '
+        volumes:
+            - ./config:/app/config
+            - ./data:/app/data
+            - ./themes:/usr/local/lib/python2.7/site-packages/flaskbb/themes
         ports:
             - 80:5000
