@@ -16,10 +16,6 @@ services:
         image: haliphax/flaskbb:latest
         depends_on:
             - celery
-        command: /bin/ash -c '\
-            pip install -U --no-deps ./flaskbb; \
-            gunicorn -w 4 -b 0.0.0.0:5000 wsgi:flaskbb \
-            '
         volumes:
             - ./config:/app/config
             - ./data:/app/data
